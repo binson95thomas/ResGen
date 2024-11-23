@@ -34,7 +34,9 @@ def save_data(cv_name, job_description):
     with open(DATA_FILE, 'w') as f:
         json.dump(data, f, indent=4)
 # Configure Gemini API key
-genai.configure(api_key='AIzaSyAoSlgl5dzDGb5vkuq6YM3UWhIOY6IV_zk')  # Ensure your API key is set in your environment
+gem_api_key = os.getenv("GEMINI_API_KEY")
+
+genai.configure(api_key=gem_api_key)  # Ensure your API key is set in your environment
 
 # Function to extract keywords using Gemini API
 def extract_keywords_from_gemini(jd_text):
